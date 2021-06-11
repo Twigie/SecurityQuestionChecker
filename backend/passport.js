@@ -13,6 +13,14 @@ const {
   TWITTER_CONSUMER_SECRET
 } = process.env
 
+passport.serializeUser(function(user, done) {
+  done(null, user);
+});
+
+passport.deserializeUser(function(user, done) {
+  done(null, user);
+});
+
 // passport.use(new InstagramStrategy({
 //   clientID: INSTAGRAM_APP_ID,
 //   clientSecret: INSTAGRAM_APP_SECRET,
@@ -32,8 +40,12 @@ passport.use(new FacebookStrategy({
   clientSecret: FACEBOOK_APP_SECRET,
   callbackURL: 'http://localhost:5000/api/users/auth/facebook/callback'
 },
-async (accessToken, refreshToken, profile, done) => {
-  console.log(accessToken, refreshToken, profile)
+function (accessToken, refreshToken, profile, cb) {
+  user = {
+    'token': accessToken,
+    'profile': profile
+  }
+  return cb(null, user)
 }))
 
 // passport.use(new TwitterStrategy({
