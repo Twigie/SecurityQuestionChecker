@@ -9,8 +9,8 @@ const {
   FACEBOOK_APP_SECRET,
   INSTAGRAM_APP_ID,
   INSTAGRAM_APP_SECRET,
-  TWITTER_CONSUMER_KEY,
-  TWITTER_CONSUMER_SECRET
+  TWITTER_API_KEY,
+  TWITTER_API_SECRET
 } = process.env
 
 passport.serializeUser(function(user, done) {
@@ -41,22 +41,24 @@ passport.use(new FacebookStrategy({
   callbackURL: 'http://localhost:5000/api/users/auth/facebook/callback'
 },
 function (accessToken, refreshToken, profile, cb) {
-  user = {
+  fbUser = {
     'token': accessToken,
     'profile': profile
   }
-  return cb(null, user)
+  return cb(null, fbUser)
 }))
 
-// passport.use(new TwitterStrategy({
-//     consumerKey: TWITTER_CONSUMER_KEY,
-//     consumerSecret: TWITTER_CONSUMER_SECRET,
-//     callbackURL: 'http://localhost:5000/auth/twitter/callback'
-// },
-// function(token, tokenSecret, profile, done) {
-//     // User.findOrCreate(..., function(err, user) {
-//     //   if (err) { return done(err) }
-//     //   done(null, user)
-//     // })
-//   }
-// ))
+passport.use(new TwitterStrategy({
+    consumerKey: TWITTER_API_KEY,
+    consumerSecret: TWITTER_API_SECRET,
+    callbackURL: 'http://localhost:5000/api/users/auth/twitter/callback'
+},
+function(token, tokenSecret, profile, done) {
+  twUser = {
+    'token': token,
+    'id': profile.id,
+    'profilePic': profile._json.profile_image_url
+  }
+  return done(null, twUser)
+  }
+))

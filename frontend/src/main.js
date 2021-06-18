@@ -1,13 +1,10 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import App from './App.vue'
-// import axios from 'axios'
+import router from './router'
 import VuexPersist from 'vuex-persist'
 
 Vue.config.productionTip = false
-
-// axios.defaults.withCredentials = true
-// axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
 
 Vue.use(Vuex)
 
@@ -17,10 +14,8 @@ const vuexLocal = new VuexPersist({
 
 const store = new Vuex.Store({
   state: {
-    fbToken: '',
-    twToken: '',
-    igToken: '',
-    userProfile: {
+    data: {
+      fbToken: '',
       fbID: '',
       fbPic: '',
       twID: '',
@@ -30,19 +25,13 @@ const store = new Vuex.Store({
     }
   },
   mutations: {
-    setFBToken (state, data) {
-      state.fbToken = data
-    },
-    setUserProfile (state, data) {
-      state.userProfile[data[0]] = data[1]
+    setState (state, data) {
+      state.data = {...state.data, ...data}
     }
   },
   getters: {
-    fbToken (state) {
-      return state.fbToken
-    },
-    userProfile (state) {
-      return state.userProfile
+    state (state) {
+      return state.data
     }
   },
   actions: {
@@ -51,7 +40,13 @@ const store = new Vuex.Store({
   plugins: [vuexLocal.plugin]
 })
 
+router.beforeEach((to, from, next) => {
+  if(to.path !== '/' && !store.getters.fbToken) next({ name: 'login'})
+  else next()
+})
+
 new Vue({
   render: h => h(App),
+  router,
   store: store
 }).$mount('#app')

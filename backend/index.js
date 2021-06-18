@@ -21,17 +21,17 @@ app.use(express.urlencoded({extended: true}))
 
 app.use(session({
     secret: process.env.SESSION_SECRET,
-    key: 'userID',
     resave: false,
     saveUninitialized: false,
     cookie: {
-        httpOnly: true
+        httpOnly: true,
+        secure: false
     },
     store: new RedisStore({ client: redisClient })
 }))
 
 app.use(cors({
-  "origin": ['http://localhost:8080'],
+  "origin": ['http://localhost:8080','http://localhost:5000'],
   'credentials': true,
   'methods': ['OPTIONS', 'GET', 'POST']
 }))
