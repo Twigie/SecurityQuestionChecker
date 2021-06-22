@@ -22,16 +22,29 @@ const store = new Vuex.Store({
       twPic: '',
       igID: '',
       igPic: ''
+    },
+    report: {
+      facebook: null,
+      twitter: null
     }
   },
   mutations: {
     setState (state, data) {
       state.data = {...state.data, ...data}
+    },
+    setReportTW (state, data) {
+      state.report.twitter = data
+    },
+    setReportFB (state, data) {
+      state.report.facebook = data
     }
   },
   getters: {
     state (state) {
       return state.data
+    },
+    report (state) {
+      return state.report
     }
   },
   actions: {
@@ -40,10 +53,10 @@ const store = new Vuex.Store({
   plugins: [vuexLocal.plugin]
 })
 
-router.beforeEach((to, from, next) => {
-  if(to.path !== '/' && !store.getters.fbToken) next({ name: 'login'})
-  else next()
-})
+// router.beforeEach((to, from, next) => {
+//   if(to.path !== '/' && !store.getters.state.fbID) next({ name: 'login'})
+//   else next()
+// })
 
 new Vue({
   render: h => h(App),

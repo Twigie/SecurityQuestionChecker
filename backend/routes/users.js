@@ -6,10 +6,10 @@ const router = express.Router()
 
 router.get('/auth', async (req, res) => {
     console.log(req.session)
-    if (!req.session.fb && !req.session.tw) {
-        res.status('201').send('Not Authenticated')
-    } else {
+    if (req.session.fb || req.session.tw) {
         res.status('200').send({...req.session.fb,...req.session.tw})
+    } else {
+        res.status('201').send('Not Authenticated')
     }
 })
 
