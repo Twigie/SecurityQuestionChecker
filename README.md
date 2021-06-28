@@ -34,7 +34,7 @@ Can a tool be created to let users know if their social media information can be
   In what city or town did your parents meet?
   What was your high school mascot?
 ```
-
+![Alt text](Screenshot_20210628_193908.png "Frontend")
 ## Conclusion
 [Insert Text]
 ## References
