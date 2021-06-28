@@ -8,9 +8,10 @@ Using certain words that are used to answer the top common security questions we
 Combining all of these systems I think I can make a website that people can used to check their security posture in regards to Security Question and Social Engineering. Providing a preventative platform allows for people to know if they are vulnerable before they are hacked. This type of platform is superior to other types that would only let you know if you have been hacked previously.
 
 ## Problem
-Currently their is no platform for people to check their social medias for infromation that can be used by malicious actors to answer security question about them.
+Currently there is no platform for people to check their social medias for information that can be used by malicious actors to answer security question about them.
 
-Modern day use of social media opens up vulnerabilities in security questions as a form of authentication. Personal Information posted by people online can be used to answer security questions for their accounts, thus granting access to the attacker. This attack technique can also be coupled with phishing and social engineering. There currently isn't a platform that gives users insight on their social media standing in regards to security questions.
+Modern day use of social media opens vulnerabilities in security questions as a form of authentication. Personal Information posted by people online can be used to answer security questions for their accounts, thus granting access to the attacker. This attack technique can also be coupled with phishing and social engineering. There currently isn't a platform that gives users insight on their social media standing in regard to security questions
+
 
 ## Research Question
 Can a tool be created to let users know if their social media information can be used to answer security questions about them?
