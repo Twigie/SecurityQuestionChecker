@@ -32,6 +32,7 @@ Can a tool be created to let users know if their social media information can be
   What was the first concert you attended?
   What was the make and model of your first car?
   In what city or town did your parents meet?
+  What was your high school mascot?
 ```
 
 ## Conclusion
