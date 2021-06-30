@@ -70,7 +70,9 @@ export default {
   },
   async mounted() {
     const res = await axios.get('http://localhost:5000/api/users/auth')
-    this.$store.commit('setState', res.data)
+    if (res.status == 200) {
+      this.$store.commit('setState', res.data)
+    }
   }
 }
 </script>
