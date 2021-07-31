@@ -30,11 +30,11 @@ This project is very significant to the security of individual people. This proj
 This section will be a technical overview of the web application design created to help solve the problem above. 
 
 The web application is built on a node.js backend and a Vue.js frontend. Much of the data and information is analyzed through the backend and the frontend is mostly for logging a user in and showing that data gathered. When the user lands on the webpage, they are greeted with a few login buttons, each button corresponding to a social media website. They then use their respective social media account to log in; this gives us an access token that can be used to look at the users account and scan for information. 
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+![App Screenshot](./HomePage.png)
 Once logged in to either a Facebook account or a Twitter account, the user can then hit scan. This will then send a request to the backend that kicks off an analysis of the user’s account. The analysis looks for keywords in the users pass that would elude that the post reveals information that could be used to answer a security question. It also looks for information on the profiles about pages that could also reveal unwanted information, mainly only for Facebook profiles. The keyword list compared against the user’s posts is ever-growing and can be expanded on easily; this allows us just to add a keyword when we find that it corresponds to a security question. For example, if we want to look for information that could be used against the security question, “What is the make of your car”, we could look for the keywords; “car”, “truck”, “van” and flag the posts that contains those words as possibly revealing too much information. 
 
 Once the backend is done looking for informaiton all the data gathered is sent to the frontend to be generated in an easy to view report. In this report the user can look at the posts and information flagged by the system and decide what to do with it. 
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+![App Screenshot](./Report.png)
 
 ## Case Scenario
 
@@ -46,7 +46,7 @@ This system is limited mainly by the social medias API’s that it interacts wit
 
 ## Conclusion
 
-In conclusion, I believe this website can greatly help security-conscious people determine if their social medias contain sensitive information that can be used against them. As a preventative step to be taken it can greatly reduce the possibility of malicious actors using information gathered on social media against an individual.
+In conclusion, I believe this website can greatly help security-conscious people determine if their social medias contain sensitive information that can be used against them. As a preventative step to be taken it can greatly reduce the possibility of malicious actors using information gathered on social media against an individual. In this ever growing world of online communication information is at everyones fingertips and we have to make sure that the wrong information doesn’t get to the wrong people.
 
 ## References
 
